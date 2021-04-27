@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //définition du bouton d'envoi sur l'activité d'ajout
         Button monBouton = (Button) findViewById(R.id.btn_newPlant);
         monBouton.setText("+");
         monBouton.setOnClickListener(new View.OnClickListener() {
