@@ -13,9 +13,9 @@ public class NewPlantActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_plant);
         //définition du bouton d'envoi sur l'activité d'ajout
-        Button monBouton = (Button) findViewById(R.id.btn_addPlant);
-        monBouton.setText("AJOUTER");
-        monBouton.setOnClickListener(new View.OnClickListener() {
+        Button btn_addPlant = (Button) findViewById(R.id.btn_addPlant);
+        btn_addPlant.setText("AJOUTER");
+        btn_addPlant.setOnClickListener(new View.OnClickListener() {
             @Override
             // initialisation de l'action au clic
             public void onClick(View view) {
@@ -27,8 +27,8 @@ public class NewPlantActivity extends Activity {
 
     // création de l'action au clic
     private void retour_mainActivity() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        Intent intent_newPlant_main = new Intent(this, MainActivity.class);
+        startActivity(intent_newPlant_main);
     }
 
     // création de l'ajout de la plante a la bdd

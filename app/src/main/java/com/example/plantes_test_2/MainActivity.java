@@ -14,9 +14,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //définition du bouton d'envoi sur l'activité d'ajout
-        Button monBouton = (Button) findViewById(R.id.btn_newPlant);
-        monBouton.setText("+");
-        monBouton.setOnClickListener(new View.OnClickListener() {
+        Button btn_newPlant = (Button) findViewById(R.id.btn_newPlant);
+        btn_newPlant.setText("+");
+        btn_newPlant.setOnClickListener(new View.OnClickListener() {
             @Override
             // initialisation de l'action au clic
             public void onClick(View view) {
@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     }
     // création de l'action au clic
     private void visualiser_la_suite() {
-        Intent intent = new Intent(this, NewPlantActivity.class);
-        startActivity(intent);
+        Intent intent_main_newPlant = new Intent(this, NewPlantActivity.class);
+        startActivity(intent_main_newPlant);
     }
 }
 
