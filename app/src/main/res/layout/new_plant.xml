@@ -8,6 +8,18 @@
     android:background="#DFCEC4">
 
     <TextView
+        android:id="@+id/txt_freqArrosage"
+        android:layout_width="356dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="296dp"
+        android:background="@color/brown"
+        android:text="  Fréquence d'arrosage :"
+        android:textColor="@color/beige"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_lum"
+        app:layout_constraintTop_toBottomOf="@+id/txtf_namePlant" />
+
+    <TextView
         android:id="@+id/txt_nameSci"
         android:layout_width="356dp"
         android:layout_height="91dp"
@@ -87,4 +99,15 @@
         android:textColor="@color/beige"
         app:layout_constraintStart_toStartOf="@+id/txt_nameSci"
         app:layout_constraintTop_toTopOf="@+id/txt_nameSci" />
+
+    <EditText
+        android:id="@+id/txtf_freqArrosage"
+        android:layout_width="322dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="38dp"
+        android:ems="10"
+        android:inputType="numberPassword"
+        app:layout_constraintEnd_toEndOf="@+id/txt_freqArrosage"
+        app:layout_constraintStart_toStartOf="@+id/txt_freqArrosage"
+        app:layout_constraintTop_toTopOf="@+id/txt_freqArrosage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
