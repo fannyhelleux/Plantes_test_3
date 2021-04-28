@@ -20,6 +20,7 @@ public class NewPlantActivity extends Activity {
             // initialisation de l'action au clic
             public void onClick(View view) {
                 retour_mainActivity();
+                ajouter_plante();
             }
         });
     }
@@ -28,5 +29,10 @@ public class NewPlantActivity extends Activity {
     private void retour_mainActivity() {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    // création de l'ajout de la plante a la bdd
+    private void ajouter_plante() {
+
     }
 }
