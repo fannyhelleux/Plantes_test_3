@@ -7,13 +7,28 @@
     android:layout_height="match_parent"
     android:background="#DFCEC4">
 
+    <Button
+
+        android:id="@+id/btn_retour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="Retour"
+        android:textColor="#A3B18A"
+        android:textSize="14sp"
+        app:backgroundTint="#588157"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <TextView
         android:id="@+id/txt_freqArrosage"
         android:layout_width="356dp"
         android:layout_height="91dp"
         android:layout_marginTop="296dp"
         android:background="@color/brown"
-        android:text="  Fréquence d'arrosage :"
+        android:text="  Jours entre arrosages :"
         android:textColor="@color/beige"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="@+id/txt_lum"
@@ -90,14 +105,15 @@
 
     <EditText
         android:id="@+id/txtf_nameSci"
-        android:layout_width="349dp"
+        android:layout_width="322dp"
         android:layout_height="42dp"
         android:layout_marginTop="35dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Nom scientifique"
+        android:text="  Nom scientifique"
         android:textColor="@color/green_medium"
-        app:layout_constraintStart_toStartOf="@+id/txt_nameSci"
+        app:layout_constraintEnd_toEndOf="@+id/txtf_freqArrosage"
+        app:layout_constraintStart_toStartOf="@+id/txtf_freqArrosage"
         app:layout_constraintTop_toTopOf="@+id/txt_nameSci" />
 
     <EditText

@@ -19,7 +19,7 @@ public class NewPlantActivity extends Activity {
 
         //définition du bouton d'envoi sur l'activité d'ajout
         Button btn_addPlant = (Button) findViewById(R.id.btn_addPlant);
-        btn_addPlant.setText("AJOUTER");
+        Button btn_retour = (Button) findViewById(R.id.btn_retour);
 
         //definition des différents champs à remplir
         EditText txtf_namePlant = (EditText) findViewById(R.id.txtf_namePlant);
@@ -38,7 +38,11 @@ public class NewPlantActivity extends Activity {
                 " lum INTEGER NOT NULL);"
 
         );
+        plant_dataBase.execSQL(" delete from plante where 1;");
         plant_dataBase.execSQL("insert into plante (nom, nom_sci, nb_jours_interArrossage, lum) values ('test', 'test' , 4, 1.5 );");
+
+
+        // Bouton de retour au main avec ajout de plante
         btn_addPlant.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -49,13 +53,21 @@ public class NewPlantActivity extends Activity {
                 // Conversion des champs en type exploitable par la bdd
                 String txt_namePlant = String.valueOf(txtf_namePlant);
                 String txt_nameSci = String.valueOf(txtf_nameSci);
-                int nb_jour_interArrosage = Integer.valueOf(String.valueOf(txtf_freqArrosage));
+                int nb_jour_interArrosage = Integer.parseInt(String.valueOf(txtf_freqArrosage));
                 float nb_lum = ratingBar_lum.getRating();
 
                 ajouter_plante(txt_namePlant, txt_nameSci, nb_jour_interArrosage, nb_lum);
             }
         });
 
+        // Bouton de retour au main sans ajout de plante
+        btn_retour.setOnClickListener(new View.OnClickListener() {
+            @Override
+            // initialisation de l'action au clic
+            public void onClick(View view) {
+                retour_mainActivity();
+            }
+        });
 
     }
 
