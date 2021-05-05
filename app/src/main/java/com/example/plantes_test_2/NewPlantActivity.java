@@ -27,11 +27,6 @@ public class NewPlantActivity extends Activity {
         EditText txtf_freqArrosage = (EditText) findViewById(R.id.txtf_freqArrosage);
         RatingBar ratingBar_lum = (RatingBar) findViewById(R.id.ratingBar_lum);
 
-        // Conversion des champs en type exploitable par la bdd
-        String txt_namePlant = String.valueOf(txtf_namePlant);
-        String txt_nameSci = String.valueOf(txtf_nameSci);
-        int nb_jour_interArrosage = Integer.valueOf(String.valueOf(txtf_freqArrosage));
-        float nb_lum = ratingBar_lum.getRating();
 
 
         // définition et création de la BDD contenant l'essemble des données des plantes
@@ -43,11 +38,20 @@ public class NewPlantActivity extends Activity {
                 " lum INTEGER NOT NULL);"
 
         );
+        plant_dataBase.execSQL("insert into plante (nom, nom_sci, nb_jours_interArrossage, lum) values ('test', 'test' , 4, 1.5 );");
         btn_addPlant.setOnClickListener(new View.OnClickListener() {
+
             @Override
             // initialisation de l'action au clic
             public void onClick(View view) {
                 retour_mainActivity();
+
+                // Conversion des champs en type exploitable par la bdd
+                String txt_namePlant = String.valueOf(txtf_namePlant);
+                String txt_nameSci = String.valueOf(txtf_nameSci);
+                int nb_jour_interArrosage = Integer.valueOf(String.valueOf(txtf_freqArrosage));
+                float nb_lum = ratingBar_lum.getRating();
+
                 ajouter_plante(txt_namePlant, txt_nameSci, nb_jour_interArrosage, nb_lum);
             }
         });

@@ -96,7 +96,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:text="Nom scientifique"
-        android:textColor="@color/beige"
+        android:textColor="@color/green_medium"
         app:layout_constraintStart_toStartOf="@+id/txt_nameSci"
         app:layout_constraintTop_toTopOf="@+id/txt_nameSci" />
 
@@ -107,6 +107,7 @@
         android:layout_marginTop="38dp"
         android:ems="10"
         android:inputType="number"
+        android:textColor="@color/beige"
         app:layout_constraintEnd_toEndOf="@+id/txt_freqArrosage"
         app:layout_constraintStart_toStartOf="@+id/txt_freqArrosage"
         app:layout_constraintTop_toTopOf="@+id/txt_freqArrosage" />
