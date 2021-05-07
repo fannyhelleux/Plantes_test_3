@@ -29,19 +29,6 @@ public class NewPlantActivity extends Activity {
 
 
 
-        // définition et création de la BDD contenant l'essemble des données des plantes
-        plant_dataBase = openOrCreateDatabase("donnees_plantes", MODE_PRIVATE, null);
-        plant_dataBase.execSQL("CREATE TABLE IF NOT EXISTS plante(" +
-                " nom text PRIMARY KEY," +
-                " nom_sci text," +
-                " nb_jours_interArrossage INTEGER NOT NULL," +
-                " lum INTEGER NOT NULL);"
-
-        );
-        plant_dataBase.execSQL(" delete from plante where 1;");
-        plant_dataBase.execSQL("insert into plante (nom, nom_sci, nb_jours_interArrossage, lum) values ('test', 'test' , 4, 1.5 );");
-
-
         // Bouton de retour au main avec ajout de plante
         btn_addPlant.setOnClickListener(new View.OnClickListener() {
 
@@ -55,9 +42,8 @@ public class NewPlantActivity extends Activity {
                 String txt_nameSci = String.valueOf(txtf_nameSci);
                 int nb_jour_interArrosage = Integer.parseInt(String.valueOf(txtf_freqArrosage));
                 float nb_lum = ratingBar_lum.getRating();
-
-                ajouter_plante(txt_namePlant, txt_nameSci, nb_jour_interArrosage, nb_lum);
             }
+
         });
 
         // Bouton de retour au main sans ajout de plante
@@ -75,10 +61,5 @@ public class NewPlantActivity extends Activity {
     private void retour_mainActivity() {
         Intent intent_newPlant_main = new Intent(this, MainActivity.class);
         startActivity(intent_newPlant_main);
-    }
-
-    // ajout de la plante a la bdd
-    private void ajouter_plante(String nom_recup, String nom_sci_recup, int nb_jour_interArrosage_recup, float lum_recup) {
-        plant_dataBase.execSQL("insert into plante (nom, nom_sci, nb_jours_interArrossage, lum) values (nom_recup, nom_sci_recup, nb_jour_interArrosage_recup, lum_recup );");
     }
 }
