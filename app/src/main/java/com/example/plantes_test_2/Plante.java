@@ -1,5 +1,7 @@
 package com.example.plantes_test_2;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -10,7 +12,7 @@ public class Plante {
     private String _nomSci;
     private int _nb_jours_interArrossage;
     private float _lum;
-    private Date _dateNextArrosage;
+    private String _dateNextArrosage;
 
     public Plante() {
 
@@ -27,7 +29,10 @@ public class Plante {
         Calendar calendar = Calendar.getInstance();
         // Ajouts des jours jusqu'au prochain arrosage
         calendar.add(Calendar.DATE, _nb_jours_interArrossage);
-        this._dateNextArrosage = calendar.getTime();
+        // conversion de la date en chaine de caractere
+        DateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
+        String date = dateFormat.format(calendar.getTime());
+        this._dateNextArrosage = date;
     }
 
     public void set_nom(String _nom) {
@@ -46,7 +51,7 @@ public class Plante {
         this._lum = _lum;
     }
 
-    public void set_dateNextArrosage(Date _dateNextArrosage) {
+    public void set_dateNextArrosage(String _dateNextArrosage) {
         this._dateNextArrosage = _dateNextArrosage;
     }
 
@@ -68,7 +73,7 @@ public class Plante {
         return _lum;
     }
 
-    public Date get_dateNextArrosage() {
+    public String get_dateNextArrosage() {
         return _dateNextArrosage;
     }
 }
