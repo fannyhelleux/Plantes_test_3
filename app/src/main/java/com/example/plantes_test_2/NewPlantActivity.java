@@ -17,6 +17,7 @@ public class NewPlantActivity extends Activity {
     String txt_nameSci;
     int nb_jour_interArrosage;
     float nb_lum;
+    Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +42,17 @@ public class NewPlantActivity extends Activity {
             @Override
             // initialisation de l'action au clic
             public void onClick(View view) {
-                retour_mainActivity();
 
                 // Conversion des champs en type exploitable par la bdd
-                txt_namePlant = String.valueOf(txtf_namePlant);
-                txt_nameSci = String.valueOf(txtf_nameSci);
+                txt_namePlant = txtf_namePlant.getText().toString();
+                txt_nameSci = txtf_nameSci.getText().toString();
                 String value = txtf_freqArrosage.getText().toString();
                 nb_jour_interArrosage = Integer.parseInt(value);
                 nb_lum = ratingBar_lum.getRating();
+
+                ajouter_plante(txt_namePlant, txt_nameSci, nb_jour_interArrosage, nb_lum);
+                //retour_mainActivity();
+
             }
         });
 
@@ -59,7 +63,6 @@ public class NewPlantActivity extends Activity {
             // initialisation de l'action au clic
             public void onClick(View view) {
                 retour_mainActivity();
-                ajouter_plante(txt_namePlant, txt_nameSci, nb_jour_interArrosage, nb_lum);
             }
         });
 
@@ -73,11 +76,18 @@ public class NewPlantActivity extends Activity {
 
     private void ajouter_plante(String nom, String nomSci, int nb_jour, float lum) {
         Plante plante = new Plante(nom, nomSci, nb_jour, lum);
-        boolean test = dataBase_manager.ajouter_pLante(plante);
-        if (test) {
-            Toast.makeText(getApplicationContext(), "Nice bv batard", Toast.LENGTH_LONG).show();
+        if (plante != null) {
+            toast.makeText(getApplicationContext(), plante.get_nom() + plante.get_nomSci() + plante.get_dateNextArrosage(), Toast.LENGTH_LONG).show();
         } else {
-            Toast.makeText(getApplicationContext(), "VA TE FAIRE ENCULER SALE PUTE", Toast.LENGTH_LONG).show();
+            toast.makeText(getApplicationContext(), "connard", Toast.LENGTH_LONG).show();
+
+        }
+        boolean test;
+        test = dataBase_manager.ajouter_plante(plante);
+        if (test) {
+            toast.makeText(getApplicationContext(), "Nice bv batard", Toast.LENGTH_LONG).show();
+        } else {
+            toast.makeText(getApplicationContext(), "VA TE FAIRE ENCULER SALE PUTE", Toast.LENGTH_LONG).show();
         }
     }
 }

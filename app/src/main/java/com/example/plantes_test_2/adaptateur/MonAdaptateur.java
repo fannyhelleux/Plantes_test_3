@@ -49,7 +49,6 @@ public class MonAdaptateur extends BaseAdapter {
         nom_txt.setText(plante.get_nom());
         date_txt.setText(plante.get_dateNextArrosage());
 
-
         return convertView;
     }
 }

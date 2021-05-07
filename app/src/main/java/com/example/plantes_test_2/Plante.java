@@ -22,13 +22,13 @@ public class Plante {
     public Plante(String nom, String nomSci, int nb_jours_interArrossage, float lum) {
         this._nom = nom;
         this._nomSci = nomSci;
-        this._nb_jours_interArrossage = _nb_jours_interArrossage;
+        this._nb_jours_interArrossage = nb_jours_interArrossage;
         this._lum = lum;
 
         // Récuparration de la date du jour qui sera considéré comme le premier arrosage
         Calendar calendar = Calendar.getInstance();
-        // Ajouts des jours jusqu'au prochain arrosage
-        calendar.add(Calendar.DATE, _nb_jours_interArrossage);
+        // Ajout des jours jusqu'au prochain arrosage
+        calendar.add(Calendar.DAY_OF_MONTH, _nb_jours_interArrossage);
         // conversion de la date en chaine de caractere
         DateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
         String date = dateFormat.format(calendar.getTime());

@@ -62,7 +62,7 @@ public class dataBase_manager extends SQLiteOpenHelper {
     }
 
     // definition de l'ajout d'une plante
-    public boolean ajouter_pLante(Plante plante) {
+    public boolean ajouter_plante(Plante plante) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(Colonne_nom, plante.get_nom());
@@ -72,7 +72,6 @@ public class dataBase_manager extends SQLiteOpenHelper {
         contentValues.put(Colonne_dateNextArrosage, plante.get_dateNextArrosage());
         long test = db.insert("Plante", null, contentValues);
         db.close();
-
         if (test == -1) {
             return false;
         } else {
