@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/beige"
+    tools:context=".DetailPlanteActivity">
+
+    <Button
+
+        android:id="@+id/btn_retour"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="Retour"
+        android:textColor="#A3B18A"
+        android:textSize="14sp"
+        app:backgroundTint="#588157"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_freqArrosage"
+        android:layout_width="354dp"
+        android:layout_height="128dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="396dp"
+        android:background="@color/brown"
+        android:text="  Jours entre arrosages :"
+        android:textColor="@color/green_light"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_lum"
+        app:layout_constraintTop_toBottomOf="@+id/txtf_namePlant" />
+
+    <TextView
+        android:id="@+id/txt_nameSci"
+        android:layout_width="356dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginLeft="4dp"
+        android:layout_marginTop="244dp"
+        android:background="@color/green_light"
+        android:text="  Nom scientifique :"
+        android:textColor="@color/green_medium"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="@+id/txt_lum"
+        app:layout_constraintTop_toBottomOf="@+id/txtf_namePlant" />
+
+    <TextView
+        android:id="@+id/txtf_namePlant"
+        android:layout_width="0dp"
+        android:layout_height="90dp"
+        android:background="@color/green_dark"
+        android:ems="10"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/green_light"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+
+        android:id="@+id/btn_addPlant"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginBottom="168dp"
+        android:text="Arrosé"
+        android:textColor="#A3B18A"
+        android:textSize="24sp"
+        app:backgroundTint="#588157"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/txt_lum"
+        android:layout_width="170dp"
+        android:layout_height="191dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="25dp"
+        android:background="@color/green_medium"
+        android:text="  Luminosité :"
+        android:textColor="@color/green_light"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtf_namePlant" />
+
+    <RatingBar
+        android:id="@+id/ratingBar_lum"
+        android:layout_width="141dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="75dp"
+        android:background="@color/green_medium"
+        app:layout_constraintEnd_toEndOf="@+id/txt_lum"
+        app:layout_constraintStart_toStartOf="@+id/txt_lum"
+        app:layout_constraintTop_toTopOf="@+id/txt_lum" />
+
+    <TextView
+        android:id="@+id/txtf_nameSci"
+        android:layout_width="322dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="35dp"
+        android:ems="10"
+        android:textColor="@color/green_medium"
+        app:layout_constraintEnd_toEndOf="@+id/txtf_freqArrosage"
+        app:layout_constraintStart_toStartOf="@+id/txtf_freqArrosage"
+        app:layout_constraintTop_toTopOf="@+id/txt_nameSci" />
+
+    <TextView
+        android:id="@+id/txtf_freqArrosage"
+        android:layout_width="322dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:textColor="@color/green_light"
+        app:layout_constraintEnd_toEndOf="@+id/txt_freqArrosage"
+        app:layout_constraintStart_toStartOf="@+id/txt_freqArrosage"
+        app:layout_constraintTop_toTopOf="@+id/txt_freqArrosage" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
+        android:background="@color/brown"
+        android:text="  Prochain     arrosage :"
+        android:textColor="@color/beige"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_lum"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txt_lum"
+        app:layout_constraintTop_toTopOf="@+id/txt_lum" />
+
+    <TextView
+        android:id="@+id/txtf_dateNextArrosage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toTopOf="@+id/textView2" />
+</androidx.constraintlayout.widget.ConstraintLayout>

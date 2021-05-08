@@ -78,7 +78,10 @@ public class dataBase_manager extends SQLiteOpenHelper {
         contentValues.put(Colonne_dateNextArrosage, plante.get_dateNextArrosage());
 
         db.insert(Table_Plante, null, contentValues);
+    }
 
-
+    public void supp_plante(String nom) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("DELETE FROM Plante WHERE nom \"" + nom + "\"");
     }
 }

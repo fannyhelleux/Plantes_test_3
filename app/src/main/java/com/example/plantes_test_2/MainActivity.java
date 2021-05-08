@@ -32,8 +32,6 @@ public class MainActivity extends Activity {
         arrayList = new ArrayList<>();
         dataToArrayList();
 
-        //ajout de click vers activité dans listview
-
 
         //définition du bouton d'envoi sur l'activité d'ajout
         Button btn_newPlant = (Button) findViewById(R.id.btn_newPlant);
@@ -47,12 +45,15 @@ public class MainActivity extends Activity {
             }
         });
 
+
+        // vers activité DetailPlante
         ListView_plante.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent_main_ficheTech = new Intent(this, fiche_technique_plante.class);
-                intent_main_ficheTech.putExtra("position", position);
-                startActivity(intent_main_ficheTech);
+                String pt = String.valueOf(position);
+                Intent intent_main_detail = new Intent(view.getContext(), DetailPlanteActivity.class);
+                intent_main_detail.putExtra("position", pt);
+                startActivity(intent_main_detail);
             }
         });
 
