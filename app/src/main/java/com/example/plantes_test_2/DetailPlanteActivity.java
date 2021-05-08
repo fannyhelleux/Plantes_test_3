@@ -125,11 +125,10 @@ public class DetailPlanteActivity extends Activity {
                 alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), broadcast);
 
 
-                // ShowNotification("ton appli pref","arroser votre "+nom_plante+"dans "+nb_jours_interArrossage+" jours");
+                ShowNotification("ton appli pref", "arroser votre " + nom_plante + " dans " + nb_jours_interArrossage + " jours");
 
 
-                /*
-                // Récuparration de la date du jour qui sera considéré comme le premier arrosage
+                // Récuparration de la date du jour
                 Calendar calendar = Calendar.getInstance();
                 // Ajout des jours jusqu'au prochain arrosage
                 calendar.add(Calendar.DAY_OF_MONTH, nb_jours_interArrossage);
@@ -137,15 +136,16 @@ public class DetailPlanteActivity extends Activity {
                 DateFormat dateFormat = new SimpleDateFormat("dd-MM-YYYY");
                 String date = dateFormat.format(calendar.getTime());
                 plante.set_dateNextArrosage(date);
-                */
+
 
             }
         });
     }
-    //méthode qui fait apparaitre la notification
-   /* private void ShowNotification(String title , String msg) {
 
-        NotificationManager notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);
+    //méthode qui fait apparaitre la notification
+    private void ShowNotification(String title, String msg) {
+
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel("ID",
@@ -154,16 +154,16 @@ public class DetailPlanteActivity extends Activity {
             notificationChannel.setDescription("Desc");
             notificationManager.createNotificationChannel(notificationChannel);
         }
-        NotificationCompat.Builder builder = new NotificationCompat.Builder(this,"ID")
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "ID")
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(title) // titre de la notif
                 .setContentText(msg)    // contenant de la notif
                 .setAutoCancel(true); // supprime la notif quand on l'a touche
 
-        Intent intent = new Intent(this,MainActivity.class);
-        PendingIntent pi = PendingIntent.getActivity(this,0,intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Intent intent = new Intent(this, MainActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         builder.setContentIntent(pi);
-        notificationManager.notify(0,builder.build());
+        notificationManager.notify(0, builder.build());
 
         /*AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         //alarmManager.setRepeating(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),AlarmManager.INTERVAL_DAY,pi);
@@ -172,12 +172,13 @@ public class DetailPlanteActivity extends Activity {
 
         alarmManager.set(AlarmManager.RTC_WAKEUP,
                 timeAtButtonClick + nb_de_jour,
-                pi);*/
+                pi); */
 
-    //Calendar calendar = Calendar.getInstance();
-    //calendar.set(Calendar.HOUR_OF_DAY,19);
-    //calendar.set(Calendar.MINUTE,1);
+        //Calendar calendar = Calendar.getInstance();
+        //calendar.set(Calendar.HOUR_OF_DAY,19);
+        //calendar.set(Calendar.MINUTE,1);
 
 
+    }
 }
 

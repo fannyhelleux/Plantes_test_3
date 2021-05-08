@@ -34,9 +34,6 @@ public class dataBase_manager extends SQLiteOpenHelper {
     //creation de la base de donnée
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("CREATE TABLE IF NOT EXISTS plante(nom TEXT PRIMARY KEY,nomSci TEXT,nb_jours_interArrossage INTEGER NOT NULL,lum FLOAT,dateNextArrosage TEXT)");
-        // Valeur test de la bdd qui servira également de titre des colonnes pour la Listview
-        db.execSQL("insert into  plante(nom,nomSci ,nb_jours_interArrossage ,lum,dateNextArrosage) values ('Nom :','micheld',2,0.2,'Date :')");
-
     }
 
     @Override
