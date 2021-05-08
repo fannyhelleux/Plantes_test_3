@@ -24,25 +24,29 @@
 
     <TextView
         android:id="@+id/txt_freqArrosage"
-        android:layout_width="356dp"
+        android:layout_width="0dp"
         android:layout_height="91dp"
         android:layout_marginTop="296dp"
         android:background="@color/brown"
         android:text="  Jours entre arrosages :"
-        android:textColor="@color/beige"
+        android:textColor="@color/brown_dark"
         android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/txt_nameSci"
         app:layout_constraintStart_toStartOf="@+id/txt_lum"
         app:layout_constraintTop_toBottomOf="@+id/txtf_namePlant" />
 
     <TextView
         android:id="@+id/txt_nameSci"
-        android:layout_width="356dp"
+        android:layout_width="0dp"
         android:layout_height="91dp"
         android:layout_marginTop="180dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:background="@color/green_light"
         android:text="  Nom scientifique :"
         android:textColor="@color/green_medium"
         android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/txt_lum"
         app:layout_constraintTop_toBottomOf="@+id/txtf_namePlant" />
 
@@ -123,7 +127,7 @@
         android:layout_marginTop="38dp"
         android:ems="10"
         android:inputType="number"
-        android:textColor="@color/beige"
+        android:textColor="@color/brown_dark"
         app:layout_constraintEnd_toEndOf="@+id/txt_freqArrosage"
         app:layout_constraintStart_toStartOf="@+id/txt_freqArrosage"
         app:layout_constraintTop_toTopOf="@+id/txt_freqArrosage" />
