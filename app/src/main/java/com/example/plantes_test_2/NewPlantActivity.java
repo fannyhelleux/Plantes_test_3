@@ -89,11 +89,9 @@ public class NewPlantActivity extends Activity {
 
                 ajouter_plante(txt_namePlant, txt_nameSci, nb_jour_interArrosage, nb_lum);
                 retour_mainActivity();
-                ajouter_plante(txt_namePlant, txt_nameSci, nb_jour_interArrosage, nb_lum);
-                retour_mainActivity();
                 String nom_plante = plante.get_nom();
 
-                ShowNotification("ton appli pref", "arroser votre " + nom_plante + " dans " + nb_jour_interArrosage + " jours");
+                ShowNotification("Ton appli pref", "arroser votre " + nom_plante + " dans " + nb_jour_interArrosage + " jours");
             }
         });
 
