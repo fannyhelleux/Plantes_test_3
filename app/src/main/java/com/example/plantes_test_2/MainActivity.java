@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
@@ -31,6 +32,9 @@ public class MainActivity extends Activity {
         arrayList = new ArrayList<>();
         dataToArrayList();
 
+        //ajout de click vers activité dans listview
+
+
         //définition du bouton d'envoi sur l'activité d'ajout
         Button btn_newPlant = (Button) findViewById(R.id.btn_newPlant);
         btn_newPlant.setText("+");
@@ -40,6 +44,15 @@ public class MainActivity extends Activity {
             // initialisation de l'action au clic
             public void onClick(View view) {
                 visualiser_la_suite();
+            }
+        });
+
+        ListView_plante.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent_main_ficheTech = new Intent(this, fiche_technique_plante.class);
+                intent_main_ficheTech.putExtra("position", position);
+                startActivity(intent_main_ficheTech);
             }
         });
 

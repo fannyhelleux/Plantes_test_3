@@ -45,6 +45,7 @@ public class dataBase_manager extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    // fonction de conversion de la base de donnée en une liste de plante
     public ArrayList<Plante> recupData() {
         ArrayList<Plante> arrayList = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();

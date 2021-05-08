@@ -45,6 +45,7 @@ public class MonAdaptateur extends BaseAdapter {
         TextView nom_txt = (TextView) convertView.findViewById(R.id.nom_txt);
         TextView date_txt = (TextView) convertView.findViewById(R.id.date_txt);
 
+        //
         Plante plante = arrayList.get(position);
         nom_txt.setText(plante.get_nom());
         date_txt.setText(plante.get_dateNextArrosage());

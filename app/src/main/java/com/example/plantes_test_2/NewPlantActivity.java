@@ -19,7 +19,6 @@ public class NewPlantActivity extends Activity {
     String txt_nameSci;
     int nb_jour_interArrosage;
     float nb_lum;
-    Toast toast;
     Plante plante;
 
     @Override
@@ -79,8 +78,6 @@ public class NewPlantActivity extends Activity {
 
     private void ajouter_plante(String nom, String nomSci, int nb_jour, float lum) {
         plante = new Plante(nom, nomSci, nb_jour, lum);
-        if (plante != null) {
-            dataBase_manager.ajouter_plante(plante);
-        }
+        dataBase_manager.ajouter_plante(plante);
     }
 }
