@@ -40,8 +40,8 @@ public class MonAdaptateur extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        LayoutInflater layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        convertView = layoutInflater.inflate(R.layout.malistview, null);
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        convertView = inflater.inflate(R.layout.malistview, null);
         TextView nom_txt = (TextView) convertView.findViewById(R.id.nom_txt);
         TextView date_txt = (TextView) convertView.findViewById(R.id.date_txt);
 

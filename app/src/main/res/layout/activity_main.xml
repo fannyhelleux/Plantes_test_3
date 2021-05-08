@@ -23,10 +23,10 @@
 
     <ListView
         android:id="@+id/ListView_plante"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="97dp"
-        tools:layout_editor_absoluteY="164dp" />
+        android:layout_width="377dp"
+        android:layout_height="752dp"
+        tools:layout_editor_absoluteX="17dp"
+        tools:layout_editor_absoluteY="11dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -33,7 +33,10 @@ public class dataBase_manager extends SQLiteOpenHelper {
     @Override
     //creation de la base de donnée
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS plante( nom text PRIMARY KEY, nomSci text, nb_jours_interArrossage INTEGER NOT NULL, lum float, dateNextArrosage text);");
+        db.execSQL("CREATE TABLE IF NOT EXISTS plante(nom TEXT PRIMARY KEY,nomSci TEXT,nb_jours_interArrossage INTEGER NOT NULL,lum FLOAT,dateNextArrosage TEXT)");
+        // Valeur test de la bdd qui servira également de titre des colonnes pour la Listview
+        db.execSQL("insert into  plante(nom,nomSci ,nb_jours_interArrossage ,lum,dateNextArrosage) values ('Nom :','micheld',2,0.2,'Date :')");
+
     }
 
     @Override
@@ -50,9 +53,9 @@ public class dataBase_manager extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
             String nom = cursor.getString(0);
             String nomSci = cursor.getString(1);
-            int nb_jours_interArrossage = cursor.getInt(3);
-            float lum = cursor.getFloat(4);
-            String dateNextArrosage = cursor.getString(5);
+            int nb_jours_interArrossage = cursor.getInt(2);
+            float lum = cursor.getFloat(3);
+            String dateNextArrosage = cursor.getString(4);
 
             Plante plante = new Plante(nom, nomSci, nb_jours_interArrossage, lum);
             arrayList.add(plante);
@@ -61,22 +64,20 @@ public class dataBase_manager extends SQLiteOpenHelper {
         return arrayList;
     }
 
+
     // definition de l'ajout d'une plante
-    public boolean ajouter_plante(Plante plante) {
-        SQLiteDatabase db = getWritableDatabase();
+    public void ajouter_plante(Plante plante) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(Colonne_nom, plante.get_nom());
         contentValues.put(Colonne_nomSci, plante.get_nomSci());
         contentValues.put(Colonne_nb_jours_interArrossage, plante.get_nb_jours_interArrossage());
         contentValues.put(Colonne_lum, plante.get_lum());
         contentValues.put(Colonne_dateNextArrosage, plante.get_dateNextArrosage());
-        long test = db.insert("Plante", null, contentValues);
-        db.close();
-        if (test == -1) {
-            return false;
-        } else {
-            return true;
-        }
+
+        db.insert(Table_Plante, null, contentValues);
+
 
     }
 }

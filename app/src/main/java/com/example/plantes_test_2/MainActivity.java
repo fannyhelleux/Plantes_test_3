@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ListView_plante = findViewById(R.id.ListView_plante);
+        ListView_plante = (ListView) findViewById(R.id.ListView_plante);
         dataBase_manager = new dataBase_manager(this);
         arrayList = new ArrayList<>();
         dataToArrayList();

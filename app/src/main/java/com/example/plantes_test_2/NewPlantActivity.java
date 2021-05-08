@@ -12,12 +12,15 @@ import android.widget.Toast;
 
 public class NewPlantActivity extends Activity {
 
+    EditText txtf_namePlant, txtf_nameSci, txtf_freqArrosage;
+    RatingBar ratingBar_lum;
     dataBase_manager dataBase_manager;
     String txt_namePlant;
     String txt_nameSci;
     int nb_jour_interArrosage;
     float nb_lum;
     Toast toast;
+    Plante plante;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,13 +30,13 @@ public class NewPlantActivity extends Activity {
         //définition du bouton d'envoi sur l'activité d'ajout
         Button btn_addPlant = (Button) findViewById(R.id.btn_addPlant);
         Button btn_retour = (Button) findViewById(R.id.btn_retour);
+        dataBase_manager = new dataBase_manager(this);
 
         //definition des différents champs à remplir
-        EditText txtf_namePlant = (EditText) findViewById(R.id.txtf_namePlant);
-        EditText txtf_nameSci = (EditText) findViewById(R.id.txtf_nameSci);
-        EditText txtf_freqArrosage = (EditText) findViewById(R.id.txtf_freqArrosage);
-        RatingBar ratingBar_lum = (RatingBar) findViewById(R.id.ratingBar_lum);
-
+        txtf_namePlant = (EditText) findViewById(R.id.txtf_namePlant);
+        txtf_nameSci = (EditText) findViewById(R.id.txtf_nameSci);
+        txtf_freqArrosage = (EditText) findViewById(R.id.txtf_freqArrosage);
+        ratingBar_lum = (RatingBar) findViewById(R.id.ratingBar_lum);
 
 
         // Bouton de retour au main avec ajout de plante
@@ -51,7 +54,7 @@ public class NewPlantActivity extends Activity {
                 nb_lum = ratingBar_lum.getRating();
 
                 ajouter_plante(txt_namePlant, txt_nameSci, nb_jour_interArrosage, nb_lum);
-                //retour_mainActivity();
+                retour_mainActivity();
 
             }
         });
@@ -75,19 +78,9 @@ public class NewPlantActivity extends Activity {
     }
 
     private void ajouter_plante(String nom, String nomSci, int nb_jour, float lum) {
-        Plante plante = new Plante(nom, nomSci, nb_jour, lum);
+        plante = new Plante(nom, nomSci, nb_jour, lum);
         if (plante != null) {
-            toast.makeText(getApplicationContext(), plante.get_nom() + plante.get_nomSci() + plante.get_dateNextArrosage(), Toast.LENGTH_LONG).show();
-        } else {
-            toast.makeText(getApplicationContext(), "connard", Toast.LENGTH_LONG).show();
-
-        }
-        boolean test;
-        test = dataBase_manager.ajouter_plante(plante);
-        if (test) {
-            toast.makeText(getApplicationContext(), "Nice bv batard", Toast.LENGTH_LONG).show();
-        } else {
-            toast.makeText(getApplicationContext(), "VA TE FAIRE ENCULER SALE PUTE", Toast.LENGTH_LONG).show();
+            dataBase_manager.ajouter_plante(plante);
         }
     }
 }
