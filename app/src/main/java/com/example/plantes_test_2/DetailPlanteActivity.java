@@ -28,7 +28,7 @@ public class DetailPlanteActivity extends Activity {
         setContentView(R.layout.activity_detail_plante);
         dataBase_manager = new dataBase_manager(this);
         Button btn_retour = (Button) findViewById(R.id.btn_retour);
-
+        Button btn_suppPlante = (Button) findViewById(R.id.btn_suppPlante);
 
         //definition des différents champs à modifier en fonction de la plante sélectionnée
         txtf_namePlant = (TextView) findViewById(R.id.txtf_namePlant);
@@ -46,7 +46,7 @@ public class DetailPlanteActivity extends Activity {
 
         txtf_namePlant.setText(plante.get_nom());
         txtf_nameSci.setText(plante.get_nomSci());
-        txtf_freqArrosage.setText(jours);
+        txtf_freqArrosage.setText(jours + " jours");
         ratingBar_lum.setRating(plante.get_lum());
         txtf_dateNextArrosage.setText(plante.get_dateNextArrosage());
 
@@ -55,6 +55,17 @@ public class DetailPlanteActivity extends Activity {
             @Override
             // initialisation de l'action au clic
             public void onClick(View view) {
+                Intent intent_detail_main = new Intent(view.getContext(), MainActivity.class);
+                startActivity(intent_detail_main);
+            }
+        });
+
+        // Bouton de retour au main avec suppression de la plante de la BDD
+        btn_suppPlante.setOnClickListener(new View.OnClickListener() {
+            @Override
+            // initialisation de l'action au clic
+            public void onClick(View view) {
+                dataBase_manager.supp_plante(plante.get_nom());
                 Intent intent_detail_main = new Intent(view.getContext(), MainActivity.class);
                 startActivity(intent_detail_main);
             }
