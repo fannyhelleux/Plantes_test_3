@@ -1,6 +1,8 @@
 package com.example.plantes_test_2;
 
 import android.app.Activity;
+import android.app.AlarmManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -27,9 +29,11 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         ListView_plante = (ListView) findViewById(R.id.ListView_plante);
         dataBase_manager = new dataBase_manager(this);
         arrayList = new ArrayList<>();
+
         dataToArrayList();
 
 

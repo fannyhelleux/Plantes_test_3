@@ -10,6 +10,32 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 
+import android.app.Activity;
+import android.app.AlarmManager;
+import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RatingBar;
+import android.widget.Toast;
+
+import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import java.util.Calendar;
 public class NewPlantActivity extends Activity {
 
     EditText txtf_namePlant, txtf_nameSci, txtf_freqArrosage;
@@ -21,6 +47,7 @@ public class NewPlantActivity extends Activity {
     float nb_lum;
     Plante plante;
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,7 +64,15 @@ public class NewPlantActivity extends Activity {
         txtf_freqArrosage = (EditText) findViewById(R.id.txtf_freqArrosage);
         ratingBar_lum = (RatingBar) findViewById(R.id.ratingBar_lum);
 
+// initialisation de l'alarm
+        AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
+        Intent notificationIntent = new Intent(this, AlarmReceiver.class);
+        PendingIntent broadcast = PendingIntent.getBroadcast(this, 100, notificationIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.SECOND, 5);
+        alarmManager.setExact(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), broadcast);
         // Bouton de retour au main avec ajout de plante
         btn_addPlant.setOnClickListener(new View.OnClickListener() {
 
@@ -54,7 +89,10 @@ public class NewPlantActivity extends Activity {
 
                 ajouter_plante(txt_namePlant, txt_nameSci, nb_jour_interArrosage, nb_lum);
                 retour_mainActivity();
-
+                ajouter_plante(txt_namePlant, txt_nameSci, nb_jour_interArrosage, nb_lum);
+                retour_mainActivity();
+                String nom_plante = plante.get_nom();
+                ShowNotification("ton appli pref", "arroser votre " + nom_plante + "dans " + nb_jour_interArrosage + " jours");
             }
         });
 
@@ -70,6 +108,41 @@ public class NewPlantActivity extends Activity {
 
     }
 
+    //méthode qui fait apparaitre la notification
+    private void ShowNotification(String title, String msg) {
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel("ID",
+                    "name",
+                    NotificationManager.IMPORTANCE_DEFAULT);
+            notificationChannel.setDescription("Desc");
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, "ID")
+                .setSmallIcon(R.mipmap.ic_launcher)
+                .setContentTitle(title)
+                .setContentText(msg)
+                .setAutoCancel(true);
+// changer ici mainactivity pour l'afficher dans l'act 3
+        Intent intent = new Intent(this, DetailPlanteActivity.class);
+        PendingIntent pi = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pi);
+        notificationManager.notify(0, builder.build());
+
+        Calendar calendar = Calendar.getInstance();
+        calendar.set(Calendar.HOUR_OF_DAY, 19);
+        calendar.set(Calendar.MINUTE, 1);
+
+        AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+        alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pi);
+       /* long timeAtButtonClick = System.currentTimeMillis();
+        long nb_de_jour = 1000*100;
+
+        alarmManager.set(AlarmManager.RTC_WAKEUP,
+        timeAtButtonClick + nb_de_jour,
+                pi); */
+    }
     // retour à la page d'accueil
     private void retour_mainActivity() {
         Intent intent_newPlant_main = new Intent(this, MainActivity.class);

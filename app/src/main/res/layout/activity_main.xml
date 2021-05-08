@@ -40,7 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@color/green_dark"
-        android:text="  Never let ur plant die"
+        android:text="                SafePlant"
         android:textColor="@color/green_light"
         android:textSize="30sp"
         app:layout_constraintTop_toTopOf="parent"
